@@ -7,6 +7,7 @@ import CitySearch from "../components/CitySearch";
 import WeatherCard from "../components/WeatherCard";
 import ForecastCard from "../components/ForecastCard";
 import WeatherAgent from "../components/WeatherAgent";
+import { RetroGrid } from "../components/RetroGrid";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -100,24 +101,50 @@ export default function Home() {
       </Head>
 
       <div
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-[family-name:var(--font-geist-sans)]`}
+        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white font-[family-name:var(--font-geist-sans)] relative overflow-hidden`}
       >
-        <header className="bg-white dark:bg-gray-800 shadow-sm">
-          <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-              Weather AI Agent
-            </h1>
-          </div>
-        </header>
+        {/* Retro Grid Background */}
+        <RetroGrid
+          opacity={0.3}
+          lightLineColor="#4338ca"
+          darkLineColor="#818cf8"
+        />
 
-        <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-          <div className="px-4 py-6 sm:px-0">
-            <div className="flex flex-col gap-6">
+        {/* Gradient orbs */}
+        <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+        <div className="absolute top-0 -right-4 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+
+        <div className="relative">
+          <header className="pt-12 pb-8 px-4">
+            <div className="max-w-7xl mx-auto text-center">
+              <div className="inline-block relative">
+                {/* Glowing background effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-50 blur-2xl animate-pulse-glow"></div>
+
+                {/* Title with gradient and animation */}
+                <h1 className="relative text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-purple-200 to-blue-200 animate-gradient-x pb-2 text-glow">
+                  Weather AI Agent
+                </h1>
+
+                {/* Animated underline */}
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 animate-gradient-x rounded-full"></div>
+              </div>
+
+              {/* Subtitle with fade-in animation */}
+              <p className="mt-4 text-lg text-blue-200/80 font-light tracking-wide animate-fade-in">
+                Intelligent Weather Insights & Forecasts
+              </p>
+            </div>
+          </header>
+
+          <main className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="flex flex-col gap-8">
               {/* City Search */}
               <CitySearch onCitySelect={handleCitySelect} />
 
               {city && (
-                <>
+                <div className="space-y-8 animate-fade-in">
                   {/* Weather Card */}
                   <WeatherCard
                     weatherData={weatherData}
@@ -134,19 +161,17 @@ export default function Home() {
 
                   {/* Weather Agent */}
                   <WeatherAgent city={city} />
-                </>
+                </div>
               )}
             </div>
-          </div>
-        </main>
+          </main>
 
-        <footer className="bg-white dark:bg-gray-800 shadow-sm mt-auto">
-          <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
-            <p className="text-center text-sm text-gray-500 dark:text-gray-400">
+          <footer className="mt-12 py-6 px-4 text-center">
+            <p className="text-sm text-gray-400">
               Powered by OpenWeatherMap and OpenAI
             </p>
-          </div>
-        </footer>
+          </footer>
+        </div>
       </div>
     </>
   );
