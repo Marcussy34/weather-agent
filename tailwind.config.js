@@ -16,6 +16,7 @@ module.exports = {
         "gradient-x": "gradient-x 15s ease infinite",
         "pulse-glow": "pulse-glow 3s ease-in-out infinite",
         "fade-in": "fade-in 0.5s ease-out forwards",
+        aurora: "aurora 4s linear infinite",
       },
       keyframes: {
         grid: {
@@ -40,6 +41,10 @@ module.exports = {
         "fade-in": {
           from: { opacity: "0", transform: "translateY(10px)" },
           to: { opacity: "1", transform: "translateY(0)" },
+        },
+        aurora: {
+          from: { transform: "rotate(0deg)" },
+          to: { transform: "rotate(360deg)" },
         },
       },
     },

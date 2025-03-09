@@ -8,6 +8,7 @@ import WeatherCard from "../components/WeatherCard";
 import ForecastCard from "../components/ForecastCard";
 import WeatherAgent from "../components/WeatherAgent";
 import { RetroGrid } from "../components/RetroGrid";
+import { AuroraText } from "../components/AuroraText";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -123,12 +124,21 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-50 blur-2xl animate-pulse-glow"></div>
 
                 {/* Title with gradient and animation */}
-                <h1 className="relative text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-purple-200 to-blue-200 animate-gradient-x pb-2 text-glow">
-                  Weather AI Agent
+                <h1 className="relative text-4xl md:text-6xl font-bold">
+                  <AuroraText
+                    colors={[
+                      "#fbbf24", // amber-400
+                      "#f87171", // red-400
+                      "#f472b6", // pink-400
+                      "#a78bfa", // violet-400
+                      "#60a5fa", // blue-400
+                      "#34d399", // emerald-400
+                    ]}
+                    speed={1.5}
+                  >
+                    Weather AI Agent
+                  </AuroraText>
                 </h1>
-
-                {/* Animated underline */}
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 animate-gradient-x rounded-full"></div>
               </div>
 
               {/* Subtitle with fade-in animation */}
